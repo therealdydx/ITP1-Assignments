@@ -1,5 +1,9 @@
 # Intro To Programming 1 Assignments
-This repository consists of the Sleuth assignments as part of the module. p5.js library was used for the assignments, which are the sketch.js files in each folder. This repository also contains a game project assignment as part of the module requirements.
+This repository consists of assignments and game projects as part of the module.  
+
+# Assignment Files
+p5.js library was used for the assignments, which are the Sketch.js files in each folder. 
+This repository also contains a game project assignment as part of the module requirements.
 
 ## Sleuth Assignments
 Case 101:  
