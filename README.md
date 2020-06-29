@@ -30,11 +30,10 @@ This repository also contains a game project assignment as part of the module re
 
 **Case 601:** Traversing Arrays, Adding Items to Arrays Dynamically
 
-**Case 701:** Functions, Function Arguments, Returning Values from Functions 
+**Case 701:** Functions, Function Arguments, Returning Values from Functions
 
 **Case 702:** Functions, Function Arguments, Returning Values from Functions, Traversing Arrays
 
 **Case 801:** Working with 2D Arrays, Working with Complex Data Structures
 
 **Case 802:** Working with 2D Arrays, Working with Complex Data Structures
-
