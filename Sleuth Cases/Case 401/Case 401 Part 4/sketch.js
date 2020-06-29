@@ -1,7 +1,7 @@
 /*
 
 Officer: 3185280
-CaseNum: 401-3-94427311-3185280
+CaseNum: 401-3-78062282-3185280
 
 Case 401 - The Case of Norbert's Weiner Stand
 Stage 4 - Mortal Cupcake
@@ -15,39 +15,39 @@ to work hard to produce a viable antidote.
 You must develop the antidote by using conditional statements in the draw loop to
 do the following.
 
-	- If botulinium goes above 0.28 and mercury dips below 0.34, or on the other hand, warfarin goes above 0.73 and polonium goes above 0.35, reduce calciumGluconate by 0.05
-	- If formaldehyde dips below 0.36, NerveGas goes above 0.63, and also ricin goes above 0.52, increment calciumGluconate by 0.05
-	- If either NerveGas goes above 0.31, polonium goes above 0.65, or perhaps ricin goes above 0.41, try decreasing glucagon by 0.03
-	- When cyanide dips below 0.63 or mercury dips below 0.58, whilst at the same time, botulinium goes above 0.72 or formaldehyde dips below 0.51, try increasing glucagon by 0.03
-	- If cyanide dips below 0.27 and NerveGas dips below 0.27, whilst at the same time, ricin dips below 0.6 or mercury goes above 0.66, reduce insulin by 0.02
-	- When formaldehyde goes above 0.42 and botulinium goes above 0.34, or on the other hand, polonium dips below 0.4 and warfarin dips below 0.35, try increasing insulin by 0.03
-	- If mercury goes above 0.33, polonium goes above 0.62, and also NerveGas dips below 0.62, decrement chalk by 0.03
-	- When botulinium dips below 0.28, formaldehyde dips below 0.46, and also ricin goes above 0.3, raise chalk by 0.01
-	- If warfarin dips below 0.39 and formaldehyde dips below 0.39, or on the other hand, cyanide dips below 0.25, decrement paracetamol by 0.03
-	- When botulinium goes above 0.62, ricin goes above 0.28, and also NerveGas dips below 0.41, raise paracetamol by 0.03
+	- When novichok dips below 0.59 and methanol goes above 0.62, whilst at the same time, mercury dips below 0.53 or alcohol dips below 0.74, try decreasing opioids by 0.03
+	- When sarin dips below 0.54, botulinium goes above 0.72, and also strychnine goes above 0.65, increment opioids by 0.02
+	- When alcohol goes above 0.32 or botulinium dips below 0.75, whilst at the same time, mercury goes above 0.53, reduce insulin by 0.03
+	- If either methanol goes above 0.65, strychnine goes above 0.38, Snake_Venom goes above 0.49, or perhaps novichok goes above 0.3, try increasing insulin by 0.02
+	- When either mercury dips below 0.33, methanol goes above 0.69, or perhaps strychnine goes above 0.39, reduce plasma by 0.04
+	- If botulinium dips below 0.56 and alcohol dips below 0.65, or on the other hand, Snake_Venom goes above 0.43, raise plasma by 0.03
+	- If alcohol goes above 0.75 and strychnine dips below 0.63, or on the other hand, botulinium goes above 0.49 and novichok dips below 0.42, decrease beta_blocker by 0.01
+	- When mercury goes above 0.71, sarin dips below 0.4, and also Snake_Venom goes above 0.5, increase beta_blocker by 0.02
+	- If either botulinium dips below 0.69, novichok dips below 0.46, or perhaps Snake_Venom goes above 0.57, try decreasing antibodies by 0.02
+	- If either alcohol dips below 0.59, mercury goes above 0.64, methanol goes above 0.56, or perhaps strychnine dips below 0.59, try increasing antibodies by 0.01
 
 
 Your conditional statements should:
 
 consider the following poisons:
 
-	- botulinium
-	- warfarin
-	- formaldehyde
-	- polonium
-	- NerveGas
+	- Snake_Venom
+	- novichok
+	- alcohol
+	- methanol
+	- sarin
+	- strychnine
 	- mercury
-	- ricin
-	- cyanide
+	- botulinium
 
 
 and modify the following antidotes:
 
-	- calciumGluconate
-	- glucagon
+	- opioids
 	- insulin
-	- chalk
-	- paracetamol
+	- plasma
+	- beta_blocker
+	- antibodies
 
 
 - There are many ways to complete this task but you should only use the
@@ -60,22 +60,22 @@ following commands:
 */
 
 //Declare the poison variables
-var botulinium;
-var warfarin;
-var formaldehyde;
-var polonium;
-var NerveGas;
+var Snake_Venom;
+var novichok;
+var alcohol;
+var methanol;
+var sarin;
+var strychnine;
 var mercury;
-var ricin;
-var cyanide;
+var botulinium;
 
 
 //Declare the antidote variables
-var calciumGluconate;
-var glucagon;
+var opioids;
 var insulin;
-var chalk;
-var paracetamol;
+var plasma;
+var beta_blocker;
+var antibodies;
 
 
 //This variable is used for drawing the graph
@@ -89,19 +89,19 @@ function setup()
 	strokeWeight(2);
 
 	//initialise the poisons and antidotes
-	botulinium = 0.5;
-	warfarin = 0.5;
-	formaldehyde = 0.5;
-	polonium = 0.5;
-	NerveGas = 0.5;
+	Snake_Venom = 0.5;
+	novichok = 0.5;
+	alcohol = 0.5;
+	methanol = 0.5;
+	sarin = 0.5;
+	strychnine = 0.5;
 	mercury = 0.5;
-	ricin = 0.5;
-	cyanide = 0.5;
-	calciumGluconate = 0.5;
-	glucagon = 0.5;
+	botulinium = 0.5;
+	opioids = 0.5;
 	insulin = 0.5;
-	chalk = 0.5;
-	paracetamol = 0.5;
+	plasma = 0.5;
+	beta_blocker = 0.5;
+	antibodies = 0.5;
 
 
 	//fills the graph with empty values
@@ -124,56 +124,57 @@ function draw()
 	//Develop the antidote below
 	//Write conditional statements to change the amount of each substance ...
     
-    if ((botulinium > 0.28 && mercury < 0.34) || (warfarin > 0.73 && polonium > 0.35))
+    if ((novichok < 0.59 && methanol > 0.62) && (mercury < 0.53 || alcohol < 0.74))
     {
-        calciumGluconate -= 0.05
+        opioids -= 0.03
     }
     
-    if (formaldehyde < 0.36 && NerveGas > 0.63 && ricin > 0.52)
+    if (sarin < 0.54 && botulinium > 0.72 && strychnine > 0.65)
     {
-        calciumGluconate += 0.05
+        opioids += 0.02
     }
     
-    if ((NerveGas > 0.31 && polonium > 0.65) || (ricin > 0.41))
+    if ((alcohol > 0.32 || botulinium < 0.75) && (mercury > 0.53))
     {
-        glucagon -= 0.03
+        insulin -= 0.03
     }
     
-    if ((cyanide < 0.63 || mercury < 0.58) || (botulinium > 0.72 || formaldehyde < 0.51))
+    if (methanol > 0.65 || strychnine > 0.38 || Snake_Venom > 0.49 || novichok > 0.3)
     {
-        glucagon += 0.03
+        insulin += 0.02
     }
     
-    if ((cyanide < 0.27 && NerveGas < 0.27) && (ricin < 0.6 || mercury > 0.66))
+    if (mercury < 0.33 || methanol > 0.69 || strychnine > 0.39)
     {
-        insulin -= 0.02
-    }
-
-    if ((formaldehyde > 0.42 && botulinium > 0.34) || (polonium < 0.4 && warfarin < 0.35))
-    {
-        insulin += 0.03
-    }
-        
-    if (mercury > 0.33 && polonium > 0.62 && NerveGas < 0.62)
-    {
-        chalk -= 0.03
+        plasma -= 0.04
     }
     
-    if (botulinium < 0.28 && formaldehyde < 0.46 && ricin > 0.3)
+    if ((botulinium < 0.56 && alcohol < 0.65) || (Snake_Venom > 0.43))
     {
-        chalk += 0.01
+        plasma += 0.03
+    }
+    
+    if ((alcohol > 0.75 && strychnine < 0.63) || (botulinium > 0.49 && novichok < 0.42))
+    {
+        beta_blocker -= 0.01
+    }
+    
+    if (mercury > 0.71 && sarin < 0.4 && Snake_Venom > 0.5)
+    {
+        beta_blocker += 0.02
     }
 	
-    if ((warfarin < 0.39) && (formaldehyde < 0.39) || (cyanide < 0.25))
+    if (botulinium < 0.69 || novichok < 0.46 || Snake_Venom > 0.57)
     {
-        paracetamol -= 0.03
+        antibodies -= 0.02
     }
     
-    if (botulinium > 0.62 && ricin > 0.28 && NerveGas < 0.41)
+    if (alcohol < 0.59 || mercury > 0.64 || methanol > 0.56 || strychnine < 0.59)
     {
-        paracetamol += 0.03
+        antibodies += 0.01
     }
 
+    
 	//////////////////////////////////////////////////////
 
 	//the code below generates new values using random numbers
@@ -184,21 +185,21 @@ function draw()
 		instead.
 	*/
 
-	botulinium = nextValue(graphs[0],botulinium);
-	warfarin = nextValue(graphs[1],warfarin);
-	formaldehyde = nextValue(graphs[2],formaldehyde);
-	polonium = nextValue(graphs[3],polonium);
-	NerveGas = nextValue(graphs[4],NerveGas);
-	mercury = nextValue(graphs[5],mercury);
-	ricin = nextValue(graphs[6],ricin);
-	cyanide = nextValue(graphs[7],cyanide);
+	Snake_Venom = nextValue(graphs[0],Snake_Venom);
+	novichok = nextValue(graphs[1],novichok);
+	alcohol = nextValue(graphs[2],alcohol);
+	methanol = nextValue(graphs[3],methanol);
+	sarin = nextValue(graphs[4],sarin);
+	strychnine = nextValue(graphs[5],strychnine);
+	mercury = nextValue(graphs[6],mercury);
+	botulinium = nextValue(graphs[7],botulinium);
 
 
-	calciumGluconate = constrain(calciumGluconate, 0, 1);
-	glucagon = constrain(glucagon, 0, 1);
+	opioids = constrain(opioids, 0, 1);
 	insulin = constrain(insulin, 0, 1);
-	chalk = constrain(chalk, 0, 1);
-	paracetamol = constrain(paracetamol, 0, 1);
+	plasma = constrain(plasma, 0, 1);
+	beta_blocker = constrain(beta_blocker, 0, 1);
+	antibodies = constrain(antibodies, 0, 1);
 
 
 	///////// DO NOT CHANGE THE CODE BELOW ///////////
@@ -231,29 +232,29 @@ function draw()
 	//draw the poisons as text
 	noStroke();
 	fill(colors[0]);
-	text('botulinium: ' + nf(botulinium,1,2), 20,20);
+	text('Snake_Venom: ' + nf(Snake_Venom,1,2), 20,20);
 	fill(colors[1]);
-	text('warfarin: ' + nf(warfarin,1,2), 20,40);
+	text('novichok: ' + nf(novichok,1,2), 20,40);
 	fill(colors[2]);
-	text('formaldehyde: ' + nf(formaldehyde,1,2), 20,60);
+	text('alcohol: ' + nf(alcohol,1,2), 20,60);
 	fill(colors[3]);
-	text('polonium: ' + nf(polonium,1,2), 20,80);
+	text('methanol: ' + nf(methanol,1,2), 20,80);
 	fill(colors[4]);
-	text('NerveGas: ' + nf(NerveGas,1,2), 20,100);
+	text('sarin: ' + nf(sarin,1,2), 20,100);
 	fill(colors[5]);
-	text('mercury: ' + nf(mercury,1,2), 20,120);
+	text('strychnine: ' + nf(strychnine,1,2), 20,120);
 	fill(colors[6]);
-	text('ricin: ' + nf(ricin,1,2), 20,140);
+	text('mercury: ' + nf(mercury,1,2), 20,140);
 	fill(colors[7]);
-	text('cyanide: ' + nf(cyanide,1,2), 20,160);
+	text('botulinium: ' + nf(botulinium,1,2), 20,160);
 
 
 	//draw the antidotes bar chart
-	drawBar(calciumGluconate,50,'calciumGluconate');
-	drawBar(glucagon,200,'glucagon');
-	drawBar(insulin,350,'insulin');
-	drawBar(chalk,500,'chalk');
-	drawBar(paracetamol,650,'paracetamol');
+	drawBar(opioids,50,'opioids');
+	drawBar(insulin,200,'insulin');
+	drawBar(plasma,350,'plasma');
+	drawBar(beta_blocker,500,'beta_blocker');
+	drawBar(antibodies,650,'antibodies');
 
 
 }
