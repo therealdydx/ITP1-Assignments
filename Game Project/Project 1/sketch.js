@@ -94,30 +94,22 @@ function draw()
 	//NB. the canyon should go from ground-level to the bottom of the screen
 	//... add your code here
     noStroke();
-		fill(135, 206, 250);
-		rect(0, 430, 200, 370)
+    fill(100, 155, 255);
+    rect(0, 430, 200, 370);
 
+    fill(154, 205, 50);
+    rect(0, 430, 20, 300)
+    triangle(20, 430, 20, 800, 100, 800);
+    fill(0,155,0);
+    triangle(0, 430, 0, 800, 60, 800);
 
-		fill(222, 184, 135);
-		beginShape();
-    vertex(0, 430);
-    vertex(60, 430);
-    vertex(40, 470);
-    vertex(70, 490);
-    vertex(40, 560)
-    vertex(50, 800);
-    vertex(0, 800)
-    endShape();
-
-    beginShape();
-    vertex(200, 430);
-    vertex(120, 430);
-    vertex(100, 470);
-    vertex(120, 490);
-    vertex(100, 560);
-    vertex(120, 800);
-    vertex(200, 800);
-    endShape();
+		// RIGHT END OF CANYON
+		
+    fill(154, 205, 50);
+    rect(180, 430, 20, 300)
+    triangle(180, 430, 180, 800, 120, height);
+    fill(0,155,0);	
+    triangle(200, 430, 140, 800, 200, height);
 
     noStroke();
     fill(222, 184, 135)
