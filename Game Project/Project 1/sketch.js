@@ -53,7 +53,7 @@ function draw()
     ellipse(cloudx, 125, 50 * cloudscale, 50 * cloudscale);
     ellipse(cloudx + 30 * cloudscale, 125, 30 * cloudscale, 30 * cloudscale);
     ellipse(cloudx + 50 * cloudscale, 125, 20 * cloudscale, 20 * cloudscale);
-    
+
 	noStroke();
 	fill(255);
 	text("cloud", 200, 100);
@@ -62,7 +62,7 @@ function draw()
 	noStroke();
     fill(128, 128, 128);
     triangle(550, 435, 700, 100, 850, 435)
-    
+
     // add snow caps to the mountain
     noStroke();
     fill(220, 220, 220);
@@ -85,7 +85,7 @@ function draw()
     ellipse(treex, treey + 60, 40, 100);
     fill(0, 150, 0);
     ellipse(treex, treey, 120, 120);
-    
+
 	noStroke();
 	fill(255);
 	text("tree", 800, 346);
@@ -94,8 +94,12 @@ function draw()
 	//NB. the canyon should go from ground-level to the bottom of the screen
 	//... add your code here
     noStroke();
-    fill(222, 184, 135);
-    beginShape();
+		fill(135, 206, 250);
+		rect(0, 430, 200, 370)
+
+
+		fill(222, 184, 135);
+		beginShape();
     vertex(0, 430);
     vertex(60, 430);
     vertex(40, 470);
@@ -104,7 +108,7 @@ function draw()
     vertex(50, 800);
     vertex(0, 800)
     endShape();
-    
+
     beginShape();
     vertex(200, 430);
     vertex(120, 430);
@@ -127,7 +131,7 @@ function draw()
     fill(255, 0 , 0);
     ellipse(250, 420, 30, 30);
     line(250, 410, 250, 400);
-	
+
     noStroke();
 	fill(255);
 	text("collectable item", 400, 400);
