@@ -20,7 +20,6 @@ var collectable;
 var mountain;
 var cloud;
 
-
 function setup()
 {
 	createCanvas(1024, 576);
@@ -32,24 +31,24 @@ function setup()
 
 	treePos_x = width/2;
 	treePos_y = height/2;
-    
-    // object canyon
-    canyon = {
-        x_pos: 0,
-        width: 100
+
+  // object canyon
+  canyon = {
+      x_pos: 550,
+      width: 100
 	}
-    
+
     collectable = {
         x_pos: 100,
         y_pos: 100,
         size: 1
     }
-    
+
     mountain = {
         x: 200,
         size: 1
     }
-    
+
     cloud = {
         x: 300,
         scale: 1.25
@@ -63,25 +62,25 @@ function draw()
 	noStroke();
 	fill(0, 155, 0);
 	rect(0, floorPos_y, height, width - floorPos_y); //draw some green ground
-    
+
 	// GAME CHARACTER BELOW ----------
     fill(222, 184, 135); // THE HEAD
     ellipse(gameChar_x, gameChar_y - 50, 25);
-    
+
     fill(0, 255, 0); // THE BODY
     rect(gameChar_x - 10, gameChar_y - 36, 20, 15);
-    
+
     fill(0); // THE LEGS
     rect(gameChar_x + 2, gameChar_y - 20, 3, 12);
     rect(gameChar_x - 5, gameChar_y - 20, 3, 12);
-    
+
     fill(0, 0, 255); // THE BOARD
     rect(gameChar_x - 15, gameChar_y - 10, 30, 8);
-    
+
     fill(0); // THE WHEELS
     ellipse(gameChar_x - 15, gameChar_y - 6, 5, 15);
     ellipse(gameChar_x + 15, gameChar_y - 6, 5, 15);
-    
+
     // DRAW THE MOUNTAIN -------------
     noStroke();
     fill(128, 128, 128);
@@ -97,8 +96,8 @@ function draw()
     vertex(mountain.x + 250, 210);
     vertex(mountain.x + 200, 100);
     endShape();
-    
-    
+
+
     // DRAW THE TREE ----------------
     stroke(0);
     strokeWeight(1);
@@ -106,45 +105,48 @@ function draw()
     ellipse(treePos_x, treePos_y + 95, 40, 100);
     fill(0, 150, 0); // THE TRUNK
     ellipse(treePos_x, treePos_y + 35, 120, 120);
-    
+
     // DRAW THE CANYON ---------------
-    noStroke();
-    fill(255, 248, 220); // THE VALLEY
+     noStroke();
+    fill(100,155,255); // THE VALLEY
     rect(canyon.x_pos , 430, 200, 370);
+
+    // LEFT END OF CANYON
+    fill(154, 205, 50);
+    rect(canyon.x_pos, floorPos_y, 20, 300)
+    triangle(canyon.x_pos + 20, floorPos_y, canyon.x_pos + 20, height, canyon.x_pos + 80, height);
+    fill(0,155,0);
+    triangle(canyon.x_pos, floorPos_y, canyon.x_pos, height, canyon.x_pos + 60, height);
     
-    fill(222, 184, 135);
-    beginShape(); // LEFT END OF CANYON
-    vertex(canyon.x_pos, 430);
-    vertex(canyon.x_pos + 60, 430);
-    vertex(canyon.x_pos + 40, 470);
-    vertex(canyon.x_pos + 70, 490);
-    vertex(canyon.x_pos + 40, 560)
-    vertex(canyon.x_pos + 50, 800);
-    vertex(canyon.x_pos, 800)
-    endShape();
-    
-    beginShape(); // RIGHT END OF CANYON
-    vertex(canyon.x_pos + 200, 430);
-    vertex(canyon.x_pos + 120, 430);
-    vertex(canyon.x_pos + 100, 470);
-    vertex(canyon.x_pos + 120, 490);
-    vertex(canyon.x_pos + 100, 560);
-    vertex(canyon.x_pos + 120, 800);
-    vertex(canyon.x_pos + 200, 800);
-    endShape();
-    
+    // RIGHT END OF CANYON
+    fill(154, 205, 50);
+    rect(canyon.x_pos + 180, floorPos_y, 20, 300)
+    triangle(canyon.x_pos + 180, floorPos_y, canyon.x_pos + 180, height, canyon.x_pos +120, height);
+    fill(0,155,0);
+    triangle(canyon.x_pos + 200, floorPos_y, canyon.x_pos + 140, height, canyon.x_pos + 200, height);
+
+
+
     // DRAW THE COLLECTABLE ----------
     stroke(0);
     strokeWeight(2);
-    fill(255, 0 , 0); // THE BODY OF THE BASKETBALL
-    ellipse(collectable.x_pos + 150 * collectable.size, collectable.y_pos + 320, 35 * collectable.size);
-    ellipse(collectable.x_pos + 140 * collectable.size, collectable.y_pos + 320, 
-            15 * collectable.size, 22 * collectable.size);
-    ellipse(collectable.x_pos + 160 * collectable.size, collectable.y_pos + 320, 
-            15 * collectable.size, 22 * collectable.size);
-    
+		
+    fill(255, 0 , 0); // THE BODY OF THE BASKETBALL	
+    ellipse(collectable.x_pos + 150 * collectable.size, 
+            collectable.y_pos + 320, 
+            35 * collectable.size);	
+    ellipse(collectable.x_pos + 140 * collectable.size, 
+            collectable.y_pos + 320,	
+            15 * collectable.size, 
+            22 * collectable.size);	
+    ellipse(collectable.x_pos + 160 * collectable.size, 
+            collectable.y_pos + 320,
+            15 * collectable.size,
+            22 * collectable.size);
+
+
     // DRAW THE CLOUD ----------------
-    noStroke(); 
+    noStroke();
     fill(255);
     ellipse(cloud.x, 125, 50 * cloud.scale, 50 * cloud.scale);
     ellipse(cloud.x + 30 * cloud.scale, 125, 30 * cloud.scale, 30 * cloud.scale);
