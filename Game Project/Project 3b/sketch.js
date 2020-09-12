@@ -104,132 +104,121 @@ function draw()
     }
 
 
-	//the game character
-	if(isLeft && isFalling)
-	{
-		// add your jumping-left code
-        fill(222, 184, 135); // the head
+		//the game character
+		if(isLeft && isFalling)
+		{
+		// ADD YOUR JUMPING-LEFT CODE
+        fill(222, 184, 135); // THE HEAD
         ellipse(gameChar_x, gameChar_y - 58, 15, 25);
 
-        fill(0, 255, 0); // the body
+        fill(0, 255, 0); // THE BODY
         rect(gameChar_x - 5, gameChar_y - 44, 10, 15);
-
-        // the arms
+        // THE ARMS OF THE BODY
         rect(gameChar_x - 1, gameChar_y - 42, 10, 4);
         rect(gameChar_x + 7, gameChar_y - 42, 4, 10);
         rect(gameChar_x - 10, gameChar_y - 38, 6, 5);
-
-        fill(0); // the legs
+        fill(0); // THE LEGS OF THE BODY
         rect(gameChar_x - 2, gameChar_y - 28, 5, 12);
 
-        fill(0); // the wheels
+        fill(0); // THE WHEELS
         ellipse(gameChar_x, gameChar_y - 6, 15, 15);
 
-	}
-	else if(isRight && isFalling)
-	{
-		// add your jumping-right code
-        fill(222, 184, 135); // the head
+		}
+		else if(isRight && isFalling)
+		{
+		// ADD YOUR JUMPING RIGHT CODE
+        fill(222, 184, 135); // THE HEAD
         ellipse(gameChar_x, gameChar_y - 58, 15, 25);
 
-        fill(0, 255, 0); // the body
+        fill(0, 255, 0); // THE BODY
         rect(gameChar_x - 5, gameChar_y - 44, 10, 15);
-
-        // the arms
+        // THE ARMS OF THE BODY
         rect(gameChar_x + 5, gameChar_y - 38, 6, 5);
         rect(gameChar_x - 12, gameChar_y - 42, 10, 4);
         rect(gameChar_x - 12, gameChar_y - 42, 4, 10);
-
-        fill(0); // the legs
+        fill(0); // THE LEGS OF THE BODY
         rect(gameChar_x - 2, gameChar_y - 28, 5, 12);
 
-        fill(0); // the wheels
+        fill(0); // THE WHEELS
         ellipse(gameChar_x, gameChar_y - 6, 15, 15);
 
-	}
-	else if(isLeft)
-	{
-		// add your walking left code
-        fill(222, 184, 135); // the head
+		}
+		else if(isLeft)
+		{
+		// ADD YOUR WALKING LEFT CODE
+        fill(222, 184, 135); // THE HEAD
         ellipse(gameChar_x, gameChar_y - 50, 15, 25);
 
-        fill(0, 255, 0); // the body
+        fill(0, 255, 0); // THE BODY
         rect(gameChar_x - 5, gameChar_y - 36, 10, 15);
 
-        // the arms
+        // THE ARMS OF THE BODY
         rect(gameChar_x - 1, gameChar_y - 34, 10, 4);
         rect(gameChar_x + 7, gameChar_y - 34, 4, 10);
         rect(gameChar_x - 10, gameChar_y - 30, 6, 5);
-
-        fill(0); // the legs
+        fill(0); // THE LEGS OF THE BODY
         rect(gameChar_x - 2, gameChar_y - 20, 5, 12);
 
-        fill(0); // the wheels
+        fill(0); // THE WHEELS
         ellipse(gameChar_x, gameChar_y - 6, 15, 15);
 
-	}
-	else if(isRight)
-	{
-		// add your walking right code
-        fill(222, 184, 135); // the head
+		}
+		else if(isRight)
+		{
+		// ADD YOUR WALKING RIGHT CODE
+        fill(222, 184, 135); // THE HEAD
         ellipse(gameChar_x, gameChar_y - 50, 15, 25);
 
-        fill(0, 255, 0); // the body
+        fill(0, 255, 0); // THE BODY
         rect(gameChar_x - 5, gameChar_y - 36, 10, 15);
-
-        // the arms
+        // THE ARMS OF THE BODY
         rect(gameChar_x + 5, gameChar_y - 30, 6, 5);
         rect(gameChar_x - 12, gameChar_y - 34, 10, 4);
         rect(gameChar_x - 12, gameChar_y - 34, 4, 10);
-
-        fill(0); // the legs
+        fill(0); // THE LEGS OF THE BODY
         rect(gameChar_x - 2, gameChar_y - 20, 5, 12);
 
-        fill(0); // the wheels
+        fill(0); // THE WHEELS
         ellipse(gameChar_x, gameChar_y - 6, 15, 15);
 
-	}
-	else if(isFalling || isPlummeting)
-	{
-		// add your jumping facing forwards code
-        fill(222, 184, 135); // the head
+		}
+		else if(isFalling || isPlummeting)
+		{
+		// ADD YOUR JUMPING FACING FORWARD CODE
+        fill(222, 184, 135); // THE HEAD
         ellipse(gameChar_x, gameChar_y - 60, 25);
 
-        fill(0, 255, 0); // the body and arms
+        fill(0, 255, 0); // THE BODY AND ARMS
         rect(gameChar_x - 10, gameChar_y - 46, 20, 15);
         rect(gameChar_x - 15, gameChar_y - 46, 30, 5);
-
-        fill(0); // the legs
+        fill(0); // THE LEGS OF THE BODY
         rect(gameChar_x + 2, gameChar_y - 30, 3, 12);
         rect(gameChar_x - 5, gameChar_y - 30, 3, 12);
 
-        fill(0, 0, 255); // the board
+        fill(0, 0, 255); // THE BOARD
         rect(gameChar_x - 15, gameChar_y - 14, 30, 8);
-
-        fill(0); // the wheels
+        fill(0); // THE WHEELS OF THE BOARD
         ellipse(gameChar_x - 15, gameChar_y - 10, 5, 15);
         ellipse(gameChar_x + 15, gameChar_y - 10, 5, 15);
-	}
-	else
-	{
-		// add your standing front facing code
-        fill(222, 184, 135); // the head
+		}
+		else
+		{
+		// ADD YOUR STANDING FRONT FACING CODE
+        fill(222, 184, 135); // THE HEAD
         ellipse(gameChar_x, gameChar_y - 50, 25);
 
-        fill(0, 255, 0); // the body
+        fill(0, 255, 0); // THE BODY AND ARMS
         rect(gameChar_x - 10, gameChar_y - 36, 20, 15);
-
-        fill(0); // the legs
+        fill(0); // THE LEGS OF THE BODY
         rect(gameChar_x + 2, gameChar_y - 20, 3, 12);
         rect(gameChar_x - 5, gameChar_y - 20, 3, 12);
 
-        fill(0, 0, 255); // the board
+        fill(0, 0, 255); // THE BOARD
         rect(gameChar_x - 15, gameChar_y - 10, 30, 8);
-
-        fill(0); // the wheels
+        fill(0); // THE WHEELS OF THE BOARD
         ellipse(gameChar_x - 15, gameChar_y - 6, 5, 15);
         ellipse(gameChar_x + 15, gameChar_y - 6, 5, 15);
-	}
+		}
 
 
 	///////////INTERACTION CODE//////////
