@@ -37,18 +37,15 @@ function setup()
       x_pos: 550,
       width: 100
 	}
-
     collectable = {
         x_pos: 100,
         y_pos: 100,
         size: 1
     }
-
     mountain = {
         x: 200,
         size: 1
     }
-
     cloud = {
         x: 300,
         scale: 1.25
@@ -97,7 +94,6 @@ function draw()
     vertex(mountain.x + 200, 100);
     endShape();
 
-
     // DRAW THE TREE ----------------
     stroke(0);
     strokeWeight(1);
@@ -107,7 +103,7 @@ function draw()
     ellipse(treePos_x, treePos_y + 35, 120, 120);
 
     // DRAW THE CANYON ---------------
-     noStroke();
+    noStroke();
     fill(100,155,255); // THE VALLEY
     rect(canyon.x_pos , 430, 200, 370);
 
@@ -117,7 +113,7 @@ function draw()
     triangle(canyon.x_pos + 20, floorPos_y, canyon.x_pos + 20, height, canyon.x_pos + 80, height);
     fill(0,155,0);
     triangle(canyon.x_pos, floorPos_y, canyon.x_pos, height, canyon.x_pos + 60, height);
-    
+
     // RIGHT END OF CANYON
     fill(154, 205, 50);
     rect(canyon.x_pos + 180, floorPos_y, 20, 300)
@@ -126,24 +122,22 @@ function draw()
     triangle(canyon.x_pos + 200, floorPos_y, canyon.x_pos + 140, height, canyon.x_pos + 200, height);
 
 
-
     // DRAW THE COLLECTABLE ----------
     stroke(0);
     strokeWeight(2);
-		
-    fill(255, 0 , 0); // THE BODY OF THE BASKETBALL	
-    ellipse(collectable.x_pos + 150 * collectable.size, 
-            collectable.y_pos + 320, 
-            35 * collectable.size);	
-    ellipse(collectable.x_pos + 140 * collectable.size, 
-            collectable.y_pos + 320,	
-            15 * collectable.size, 
-            22 * collectable.size);	
-    ellipse(collectable.x_pos + 160 * collectable.size, 
+
+    fill(255, 0 , 0); // THE BODY OF THE BASKETBALL
+    ellipse(collectable.x_pos + 150 * collectable.size,
+            collectable.y_pos + 320,
+            35 * collectable.size);
+    ellipse(collectable.x_pos + 140 * collectable.size,
             collectable.y_pos + 320,
             15 * collectable.size,
             22 * collectable.size);
-
+    ellipse(collectable.x_pos + 160 * collectable.size,
+            collectable.y_pos + 320,
+            15 * collectable.size,
+            22 * collectable.size);
 
     // DRAW THE CLOUD ----------------
     noStroke();
