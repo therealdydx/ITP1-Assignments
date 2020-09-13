@@ -228,12 +228,10 @@ function keyPressed()
     
     if (keyCode == 37)
     {
-        console.log("left arrow")
         isLeft = true;
     }
     if (keyCode == 39)
     {
-        console.log("right arrow")
         isRight = true;
     }
     if (keyCode == 32 && gameChar_y == floorPos_y)
@@ -252,12 +250,10 @@ function keyReleased()
     
     if (keyCode == 37)
     {
-        console.log("left arrow")
         isLeft = false;
     }
     else if (keyCode == 39)
     {
-        console.log("right arrow")
         isRight = false;
     }
 }

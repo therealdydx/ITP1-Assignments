@@ -41,8 +41,7 @@ function setup()
 
     collectable = {
         x_pos: 100,
-        y_pos: 100,
-        size: 1,
+        y_pos: floorPos_y,
         isFound: false
     }
 }
@@ -81,7 +80,7 @@ function draw()
 
     // DRAW THE COLLECTABLE ----------
 
-    if (dist(gameChar_x, gameChar_y, collectable.x_pos + 150, collectable.y_pos + 320) < 20)
+    if (dist(gameChar_x, gameChar_y, collectable.x_pos, collectable.y_pos) < 20)
     {
         collectable.isFound = true;
     }
@@ -90,17 +89,9 @@ function draw()
     {
         stroke(0);
         fill(255, 0 , 0); // THE BODY OF THE BASKETBALL
-        ellipse(collectable.x_pos + 150 * collectable.size,
-                collectable.y_pos + 320,
-                35 * collectable.size);
-        ellipse(collectable.x_pos + 140 * collectable.size,
-                collectable.y_pos + 320,
-                15 * collectable.size,
-                22 * collectable.size);
-        ellipse(collectable.x_pos + 160 * collectable.size,
-                collectable.y_pos + 320,
-                15 * collectable.size,
-                22 * collectable.size);
+        ellipse(collectable.x_pos, collectable.y_pos, 35);
+        ellipse(collectable.x_pos - 10, collectable.y_pos, 15, 22);
+        ellipse(collectable.x_pos + 10, collectable.y_pos, 15, 22);
     }
 
 
@@ -226,12 +217,12 @@ function draw()
     // IF THE CHARACTER IS MOVING LEFT
     if (isLeft == true)
     {
-        gameChar_x -= 3;
+        gameChar_x -= 5;
     }
     // IF THE CHARACTER IS MOVING RIGHT
     if (isRight == true)
     {
-        gameChar_x += 3;
+        gameChar_x += 5;
     }
     // IF THE CHARACTER IS FALLING AFTER JUMPING
     if (gameChar_y < floorPos_y)

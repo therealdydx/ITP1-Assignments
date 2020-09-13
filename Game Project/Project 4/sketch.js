@@ -35,15 +35,21 @@ function setup()
 
 	// Initialise arrays of scenery objects.
     trees_x = [-300, 100, 500, 700, 850, 1300];
+    
     clouds = [
         {pos_x: -100, pos_y: 300},
         {pos_x: 100, pos_y: 200},
         {pos_x: 600, pos_y: 100},
         {pos_x: 800, pos_y: 200}
     ];
+    
     mountains = [-550, 100, 500, 1024];
+    
     canyon = [-200, 900];
-    collectable = [50, 650];
+
+    collectable = [
+        {x_pos: 50, y_pos: floorPos_y, isFound: false},
+        {x_pos: 650, y_pos: floorPos_y, isFound: false}]; 
 }
 
 function draw()
@@ -118,10 +124,10 @@ function draw()
     {
         stroke(0);
         fill(255, 0 , 0); // THE BODY OF THE BASKETBALL
-        ellipse(collectable[i], floorPos_y, 35);
-        ellipse(collectable[i] - 10, floorPos_y, 15, 22);
-        ellipse(collectable[i] + 10, floorPos_y, 15, 22); 
-    }
+        ellipse(collectable[i].x_pos, collectable[i].y_pos, 35);
+        ellipse(collectable[i].x_pos - 10, collectable[i].y_pos, 15, 22);
+        ellipse(collectable[i].x_pos + 10, collectable[i].y_pos, 15, 22);
+    }  
     pop();
     
 	// Draw the game character - this must be last ---------------------------------
@@ -173,7 +179,6 @@ function draw()
 // ---------------------------------------------------------------------------------
 function keyPressed()
 {
-
 	if(key == 'A' || keyCode == 37)
 	{
 		isLeft = true;
@@ -183,7 +188,6 @@ function keyPressed()
 	{
 		isRight = true;
 	}
-
 }
 
 function keyReleased()
