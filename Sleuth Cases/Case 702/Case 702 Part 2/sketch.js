@@ -1,7 +1,7 @@
 /*
 
 Officer: 3185280
-CaseNum: 702-1-57848161-3185280
+CaseNum: 702-1-96546002-3185280
 
 Case 702 - The case of Vanishing Vannevar
 Stage 2 - Downtown traffic
@@ -18,65 +18,67 @@ but you should ONLY use the following commands and techniques:
 	- Traversing arrays with for loops
 	- calling functions and returning values
 
-HINT: make sure you take a look at the initialisation of sleuthPI_carObject and the cars in
-Car_List to understand their properties.
+HINT: make sure you take a look at the initialisation of investigatorCarObject and the cars in
+VehicleObject_List to understand their properties.
 
 */
+
 ///////////////////////// HELPER FUNCTIONS /////////////////////
 
-function MoveVehicle()
+function drive_car()
 {
 	/*
 	This function should do the following: 
-	 - increment sleuthPI_carObject's dist_amnt property by its accel_amount property 
-	 - add a random amount between -0.04 and 0.04 to sleuthPI_carObject's engineVibrate_amt property
-	 - use the constrain function to constrain sleuthPI_carObject's engineVibrate_amt property to values between 0.07 and 0.94
-	 - call the TurnCarMotor function passing sleuthPI_carObject as an argument
+	 - increment investigatorCarObject's distanceAmnt property by its gasVal property 
+	 - add a random amount between -0.06 and 0.06 to investigatorCarObject's vibrateAmt property
+	 - use the constrain function to constrain investigatorCarObject's vibrateAmt property to values between 0.02 and 1.22
+	 - call the cycle_carEngine function passing investigatorCarObject as an argument
 	*/
-    sleuthPI_carObject.dist_amnt += sleuthPI_carObject.accel_amount;
-    sleuthPI_carObject.engineVibrate_amt += random(-0.04, 0.04);
+    investigatorCarObject.distanceAmnt += investigatorCarObject.gasVal;
+    investigatorCarObject.vibrateAmt += random(-0.06, 0.06);
     
-    sleuthPI_carObject.engineVibrate_amt = constrain(sleuthPI_carObject.engineVibrate_amt, 0.07, 0.94);
+    investigatorCarObject.vibrateAmt = constrain(investigatorCarObject.vibrateAmt, 0.02, 1.22);
     
-    TurnCarMotor(sleuthPI_carObject);
+    cycle_carEngine(investigatorCarObject);
 }
 
 
-function SwapLanes(car)
+function switch_lanes(car)
 {
 	/*
 	This function should do the following: 
 	 - move car from one lane to the other.
 	 - do the move in a single step without any extra animation.
-	 - use LaneCoord_A and LaneCoord_B to effect the change.
+	 - use Lane_Pos_A and Lane_Pos_B to effect the change.
 	 hint: You will need to modify the x property of car.
 	*/
-    if (sleuthPI_carObject.x == LaneCoord_A)
+    
+    if (car.x == Lane_Pos_A)
     {
-        sleuthPI_carObject.x = LaneCoord_B;
+        car.x = Lane_Pos_B;
     }
-    else if (sleuthPI_carObject.x == LaneCoord_B)
+    else if (car.x == Lane_Pos_B)
     {
-        sleuthPI_carObject.x = LaneCoord_A;
+        car.x = Lane_Pos_A;
     }
     return car;
 }
 
 
-function SearchVehicleInfront( Target_car_A, Target_car_B )
+function car_isAhead( Target_car_A, Target_car_B )
 {
 	/*
 	This function should do the following: 
 	 - determine if Target_car_A is in the same lane and less than 200px behind Target_car_B.
-	 - do this by comparing the two cars' dist_amnt properties
-	 - if these requirements are met then return the number_plate property for Target_car_B. Otherwise return false.
+	 - do this by comparing the two cars' distanceAmnt properties
+	 - if these requirements are met then return the licencePlate property for Target_car_B. Otherwise return false.
 	*/
-    var distance = abs(Target_car_B.dist_amnt - Target_car_A.dist_amnt);
+    var distance = abs(Target_car_B.distanceAmnt - Target_car_A.distanceAmnt);
     
     if (distance < 200 && Target_car_A.x == Target_car_B.x &&
-       Target_car_A.dist_amnt < Target_car_B.dist_amnt)
+       Target_car_A.distanceAmnt < Target_car_B.distanceAmnt)
     {
-        return Target_car_B.number_plate;
+        return Target_car_B.licencePlate;
     }
     else
     {
@@ -87,16 +89,16 @@ function SearchVehicleInfront( Target_car_A, Target_car_B )
 
 //////////////DO NOT CHANGE CODE BELOW THIS LINE//////////////////
 
-var sleuthPI_carObject;
+var investigatorCarObject;
 
 var roadWidth;
 var roadLeftEdge;
-var LaneCoord_A;
-var LaneCoord_B;
+var Lane_Pos_A;
+var Lane_Pos_B;
 var carImages = {};
 
-var Car_List = [
-{ x: 300, y: 0, dist_amnt: -200, car_category: 'greenCar', number_plate: 'AI3XU9', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 200, car_category: 'blueCar', number_plate: 'VKVQN0', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 600, car_category: 'blueCar', number_plate: 'NB8U7B', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 1000, car_category: 'redCar', number_plate: '4QTG42', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 1400, car_category: 'whiteCar', number_plate: 'WB0YGC', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 1800, car_category: 'redCar', number_plate: '3V47Y5', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 2200, car_category: 'blueCar', number_plate: 'LUMDV0', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 2600, car_category: 'blueCar', number_plate: '6OB860', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 3000, car_category: 'blueCar', number_plate: 'YQT72V', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 3400, car_category: 'redCar', number_plate: '5E7GYA', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 3800, car_category: 'blueCar', number_plate: '72UDBW', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 4200, car_category: 'greenCar', number_plate: 'ULE51R', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 4600, car_category: 'redCar', number_plate: '7YZJJ8', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 5000, car_category: 'redCar', number_plate: 'LCOYVI', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 5400, car_category: 'greenCar', number_plate: 'IO54U4', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 5800, car_category: 'redCar', number_plate: '00AI4E', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 6200, car_category: 'blueCar', number_plate: '2F5VZG', accel_amount: 2, exhaust: [  ]} , { x: 300, y: 0, dist_amnt: 6600, car_category: 'blueCar', number_plate: 'XQ1FGB', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 7000, car_category: 'whiteCar', number_plate: 'LWQE74', accel_amount: 2, exhaust: [  ]} , { x: 500, y: 0, dist_amnt: 7400, car_category: 'whiteCar', number_plate: '95FQZA', accel_amount: 2, exhaust: [  ]} 
+var VehicleObject_List = [
+{ x: 500, y: 0, distanceAmnt: -200, vehicleCategory: 'redCar', licencePlate: 'EKLUOQ', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 200, vehicleCategory: 'blueCar', licencePlate: 'NRJ5I4', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 600, vehicleCategory: 'whiteCar', licencePlate: 'SCUGQ8', gasVal: 2, exhaust: [  ]} , { x: 500, y: 0, distanceAmnt: 1000, vehicleCategory: 'redCar', licencePlate: '0IZX7B', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 1400, vehicleCategory: 'whiteCar', licencePlate: 'VBCIXX', gasVal: 2, exhaust: [  ]} , { x: 500, y: 0, distanceAmnt: 1800, vehicleCategory: 'redCar', licencePlate: '9VWYGU', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 2200, vehicleCategory: 'redCar', licencePlate: 'X602WC', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 2600, vehicleCategory: 'redCar', licencePlate: 'LMDJBV', gasVal: 2, exhaust: [  ]} , { x: 500, y: 0, distanceAmnt: 3000, vehicleCategory: 'redCar', licencePlate: '761UY5', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 3400, vehicleCategory: 'blueCar', licencePlate: 'ZH16KT', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 3800, vehicleCategory: 'redCar', licencePlate: 'UB7EXK', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 4200, vehicleCategory: 'greenCar', licencePlate: 'D2R366', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 4600, vehicleCategory: 'redCar', licencePlate: 'G6L8C1', gasVal: 2, exhaust: [  ]} , { x: 500, y: 0, distanceAmnt: 5000, vehicleCategory: 'greenCar', licencePlate: 'J5IFML', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 5400, vehicleCategory: 'whiteCar', licencePlate: 'VANA9V', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 5800, vehicleCategory: 'blueCar', licencePlate: '7XQO5Y', gasVal: 2, exhaust: [  ]} , { x: 500, y: 0, distanceAmnt: 6200, vehicleCategory: 'redCar', licencePlate: 'G3QOWA', gasVal: 2, exhaust: [  ]} , { x: 500, y: 0, distanceAmnt: 6600, vehicleCategory: 'whiteCar', licencePlate: 'HCY3L5', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 7000, vehicleCategory: 'greenCar', licencePlate: 'W8651J', gasVal: 2, exhaust: [  ]} , { x: 300, y: 0, distanceAmnt: 7400, vehicleCategory: 'redCar', licencePlate: 'AB9K3W', gasVal: 2, exhaust: [  ]} 
 ];
 
 
@@ -123,18 +125,18 @@ function setup()
 
 	roadWidth = 400;
 	roadLeftEdge = 200;
-	LaneCoord_A = 300;
-	LaneCoord_B = 500;
+	Lane_Pos_A = 300;
+	Lane_Pos_B = 500;
 
-	sleuthPI_carObject = 
+	investigatorCarObject = 
 	{
 		x: roadLeftEdge + roadWidth/4,
 		y: 550,
-		dist_amnt: 0,
-		accel_amount: 3,
-		engineVibrate_amt: 0,
-		car_category: 'detective',
-		number_plate: '5L3UTH',
+		distanceAmnt: 0,
+		gasVal: 3,
+		vibrateAmt: 0,
+		vehicleCategory: 'detective',
+		licencePlate: '5L3UTH',
 		exhaust: []
 	}
 
@@ -155,20 +157,20 @@ function draw()
 	////////////////////// HANDLE DETECTIVE /////////////////////////
 
 
-	MoveVehicle();
-	for(var i = 0; i < Car_List.length; i++)
+	drive_car();
+	for(var i = 0; i < VehicleObject_List.length; i++)
 	{
-var b2b = SearchVehicleInfront(sleuthPI_carObject, Car_List[i]);
-		if(b2b)SwapLanes(sleuthPI_carObject);
+var b2b = car_isAhead(investigatorCarObject, VehicleObject_List[i]);
+		if(b2b)switch_lanes(investigatorCarObject);
 	}
 
 
 	//////////////////////HANDLE THE OTHER CARS//////////////////////
 
-	for(var i = 0; i < Car_List.length; i++)
+	for(var i = 0; i < VehicleObject_List.length; i++)
 	{
-		Car_List[i].dist_amnt += Car_List[i].accel_amount;
-		Car_List[i].y = sleuthPI_carObject.y - Car_List[i].dist_amnt + sleuthPI_carObject.dist_amnt;
+		VehicleObject_List[i].distanceAmnt += VehicleObject_List[i].gasVal;
+		VehicleObject_List[i].y = investigatorCarObject.y - VehicleObject_List[i].distanceAmnt + investigatorCarObject.distanceAmnt;
 	}
 
 }
@@ -185,8 +187,8 @@ function drawRoad()
 	for(var i = -1; i < 20; i++)
 	{
 		line(
-		roadLeftEdge + roadWidth/2 , i * 100 + (sleuthPI_carObject.dist_amnt%100),
-		roadLeftEdge + roadWidth/2 , i * 100 + 70 + (sleuthPI_carObject.dist_amnt%100)
+		roadLeftEdge + roadWidth/2 , i * 100 + (investigatorCarObject.distanceAmnt%100),
+		roadLeftEdge + roadWidth/2 , i * 100 + 70 + (investigatorCarObject.distanceAmnt%100)
 		);
 	}
 }
@@ -196,43 +198,43 @@ function drawCars()
 	//draw the detective car
 
 	image
-	drawExhaust(sleuthPI_carObject);
+	drawExhaust(investigatorCarObject);
 	image
 	(
 		carImages["detective"],
-		sleuthPI_carObject.x - carImages["detective"].width/2 + random(-sleuthPI_carObject.engineVibrate_amt, sleuthPI_carObject.engineVibrate_amt),
-		sleuthPI_carObject.y + random(-sleuthPI_carObject.engineVibrate_amt, sleuthPI_carObject.engineVibrate_amt)
+		investigatorCarObject.x - carImages["detective"].width/2 + random(-investigatorCarObject.vibrateAmt, investigatorCarObject.vibrateAmt),
+		investigatorCarObject.y + random(-investigatorCarObject.vibrateAmt, investigatorCarObject.vibrateAmt)
 	);
 
 	//draw all other cars
 
-	for(var i = 0; i < Car_List.length; i ++)
+	for(var i = 0; i < VehicleObject_List.length; i ++)
 	{
-		if(Car_List[i].y < height && Car_List[i].y > -height/2)
+		if(VehicleObject_List[i].y < height && VehicleObject_List[i].y > -height/2)
 		{
 			image(
-			carImages[Car_List[i].car_category],
-			Car_List[i].x - carImages[Car_List[i].car_category].width/2,
-			Car_List[i].y
+			carImages[VehicleObject_List[i].vehicleCategory],
+			VehicleObject_List[i].x - carImages[VehicleObject_List[i].vehicleCategory].width/2,
+			VehicleObject_List[i].y
 			);
-			TurnCarMotor(Car_List[i]);
+			cycle_carEngine(VehicleObject_List[i]);
 
-			drawExhaust(Car_List[i]);
+			drawExhaust(VehicleObject_List[i]);
 		}
 	}
 
 }
 
-function TurnCarMotor(car)
+function cycle_carEngine(car)
 {
 
-	car.exhaust.push({size: 2, x: car.x, y: car.y + carImages[car.car_category].height});
+	car.exhaust.push({size: 2, x: car.x, y: car.y + carImages[car.vehicleCategory].height});
 
 	for(var i = car.exhaust.length -1; i >= 0 ; i--)
 	{
 
-		car.exhaust[i].y  += max(0.75, car.accel_amount/3);
-		if(car.car_category != "detective")car.exhaust[i].y += (sleuthPI_carObject.accel_amount - car.accel_amount);
+		car.exhaust[i].y  += max(0.75, car.gasVal/3);
+		if(car.vehicleCategory != "detective")car.exhaust[i].y += (investigatorCarObject.gasVal - car.gasVal);
 		car.exhaust[i].x += random(-1,1);
 		car.exhaust[i].size += 0.5;
 
