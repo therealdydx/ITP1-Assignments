@@ -27,17 +27,3 @@ This repository also contains a game project assignment as part of the course re
 | 702  | Functions, Function Arguments, Returning Values from Functions, Traversing Arrays | JavaScript, p5.js |
 | 801  | Working with 2D Arrays, Working with Complex Data Structures | JavaScript, p5.js |
 | 802  | Working with 2D Arrays, Working with Complex Data Structures | JavaScript, p5.js |
-|      |                                                              |                   |
-|      |                                                              |                   |
-|      |                                                              |                   |
-|      |                                                              |                   |
-|      |                                                              |                   |
-|      |                                                              |                   |
-|      |                                                              |                   |
-|      |                                                              |                   |
-
-
-
-
-
-
