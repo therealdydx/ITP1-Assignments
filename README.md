@@ -1,4 +1,4 @@
-# ITP 1 Assignments
+# Intro to Programming 1 Assignments
 This repository consists of assignments and game projects as part of the module, done in JavaScript.  
 
 # Assignment Files
